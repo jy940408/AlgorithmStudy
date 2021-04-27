@@ -2,7 +2,7 @@ package JAVAif;
 
 import java.util.Scanner;
 
-public class ¾Ë¶÷½Ã°è {
+public class ì•ŒëžŒì‹œê³„ {
 
 	public static void main(String[] args) {
 		

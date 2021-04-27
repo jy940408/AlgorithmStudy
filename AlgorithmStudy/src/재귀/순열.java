@@ -1,11 +1,11 @@
-package Àç±Í;
+package ìž¬ê·€;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ¼ø¿­ {
+public class ìˆœì—´ {
 
-	//ÀÔ·ÂÇÑ ±ÛÀÚ¸¦ ÇÑ±ÛÀÚ¾¿ ºÐ¸®ÇÑ µÚ °ªÀ¸·Î ³ÖÀº ¹è¿­
+	//ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Ñ±ï¿½ï¿½Ú¾ï¿½ ï¿½Ð¸ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
 	public static ArrayList textList(String a_) {
 		
 		String[] a = a_.split("");
@@ -19,7 +19,7 @@ public class ¼ø¿­ {
 		return list;
 	}
 	
-	//¼ø¿­ °³¼ö ±¸ÇÏ´Â ¸Þ¼Òµå
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½
 	public static int maxNum(int i) {
 		
 		int k = 1;
@@ -34,7 +34,7 @@ public class ¼ø¿­ {
 		return k;
 	}
 	
-	//»ç¿ëÇÑ ±ÛÀÚ »« µÚ ¸¸µç ¹è¿­
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
 	public static ArrayList separationList(ArrayList textGroup, int i) {
 		ArrayList returnList = new ArrayList();
 			for(int j = 0 ; j < textGroup.size() ; j++) {
@@ -70,10 +70,10 @@ public class ¼ø¿­ {
 	
 		ArrayList textList = textList(a_);
 		int maxNum = maxNum(textList.size());
-		System.out.println("¸ñ·Ï Å×½ºÆ®: " + textList);
-		System.out.println("±æÀÌ Å×½ºÆ®: " + maxNum);
+		System.out.println("ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®: " + textList);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®: " + maxNum);
 		
-//		compareTo ±âÁØ °ªÀÌ ÀÛÀ¸¸é À½¼ö, ±âÁØ °ªÀÌ ´õ Å©¸é ¾ç¼ö, °°À¸¸é 0
+//		compareTo ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0
 		for(int i = 0 ; i < (textList.size()-1) ; i++) {
 			((String)textList.get(i)).compareTo((String)textList.get(i+1));
 			System.out.println(((String)textList.get(i)).compareTo((String)textList.get(i+1)));
@@ -81,19 +81,19 @@ public class ¼ø¿­ {
 		
 		ArrayList combineList_ = new ArrayList();
 		int i = 0;
-		System.out.println("»çÀÌÁî Å×½ºÆ®: " + textList.size());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®: " + textList.size());
 		System.out.println("textList: " + textList);
 		
 //		while(i < textList.size()) {
 //			String combineText = "";
 //			combineText = (String)textList.get(i);
-//			System.out.println("i°ª Å×½ºÆ®: " + i);
+//			System.out.println("iï¿½ï¿½ ï¿½×½ï¿½Æ®: " + i);
 //			combineList_ = separationList(textList, i);
-//			System.out.println("combineList_ Å×½ºÆ®: " + combineList_);
+//			System.out.println("combineList_ ï¿½×½ï¿½Æ®: " + combineList_);
 //			for(int j = (i+1) ; j < combineList_.size() ; j++) {
-//				System.out.println("j°ª: " + j);
+//				System.out.println("jï¿½ï¿½: " + j);
 //				combineText += (String)textList.get(j);
-//				System.out.println("¹®ÀÚ¿­ ÇÕÄ¡±â Å×½ºÆ®: " + combineText);
+//				System.out.println("ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½×½ï¿½Æ®: " + combineText);
 //				ArrayList testList = separationList(textList, j);
 //			}
 //			i++;
