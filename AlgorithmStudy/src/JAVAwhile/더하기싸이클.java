@@ -7,38 +7,47 @@ public class 더하기싸이클 {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		
 		int i = scan.nextInt();
-		int j = 0;
+		String j = Integer.toString(i);
+		
 		int k = 0;
-		if(i < 10) {
-			j = 0;
-			k = i;
-		}else {
-			String itoString = Integer.toString(i);
-			String[] l = itoString.split("");
-			j = Integer.parseInt(l[0]);
-			k = Integer.parseInt(l[1]);
-		}
+		int l = 0;
 		
-		int o = j + k;
+		if(j.length() == 1) {
+			k = 0;
+			l = i;
+		}else if(j.length() == 2){
+			String[] iSplit = j.split("");
+			k = Integer.parseInt(iSplit[0]);
+			l = Integer.parseInt(iSplit[1]);
+		}
 		int m = 0;
-		int n = 0;
-		if(o < 10) {
-			m = 0;
-			n = j+k;
+		int o = 0;
+		if(i != 0) {
+			while(i != m) {
+				m = k + l;
+				String n = Integer.toString(m);
+				
+				if(n.length() == 1) {
+					String p = Integer.toString(l) + n;
+					m = Integer.parseInt(p);
+					k = l;
+					l = Integer.parseInt(n);
+				}else if(n.length() == 2) {
+					String[] mSplit = n.split("");
+					String p = Integer.toString(l) + mSplit[1];
+					m = Integer.parseInt(p);
+					k = l;
+					l = Integer.parseInt(mSplit[1]);
+				}
+				
+				o++;
+			}
 		}else {
-			String otoString = Integer.toString(o);
-			String[] p = otoString.split("");
-			m = Integer.parseInt(p[0]);
-			n = Integer.parseInt(p[1]);
+			o = 1;
 		}
 		
-		if(i != o) {
-			
-		}
-		
-		
+		System.out.println(o);
 	}
 
 }

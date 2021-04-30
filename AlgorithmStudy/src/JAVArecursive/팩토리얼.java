@@ -1,4 +1,4 @@
-package 재귀;
+package JAVArecursive;
 
 import java.util.Scanner;
 
