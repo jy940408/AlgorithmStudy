@@ -80,7 +80,6 @@ public class 압축 {
 			}
 			mainCom = middleS + mainCom;
 			
-			stringLast = "";
 			String pareLast = "";
 			for(int i = 0 ; i < secondNum ; i++) {
 				stringLast += compress.get(i);
@@ -92,6 +91,7 @@ public class 압축 {
 			stringLast = stringLast + mainCom + pareLast;
 			
 			originalLength(stringLast);
+			
 		}else {
 			System.out.println(comps.length());
 		}
