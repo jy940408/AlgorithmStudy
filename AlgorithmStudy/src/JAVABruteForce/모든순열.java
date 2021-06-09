@@ -5,10 +5,12 @@ import java.util.Scanner;
 
 public class 모든순열 {
 
-	public static void numList() {
+	public static void numList(int firstLine) {
 		
 //		for문 반복해서 돌리기
-		
+		for(int i = 1 ; i <= firstLine ; i++) {
+			
+		}
 		
 	}
 	
@@ -20,7 +22,7 @@ public class 모든순열 {
 		int firstLine = scan.nextInt();
 //		순열 총 갯수
 		int allRound = 1;
-//		순열만들 담아둘 배열
+//		만든 순열 담아둘 배열
 		ArrayList numList = new ArrayList<>();
 		
 		for(int i = 1 ; i <= firstLine ; i++) {
