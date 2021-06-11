@@ -57,6 +57,7 @@ public class 전쟁_땅따먹기 {
 			bw.flush();
 		}
 		
+		
 		bw.close();
 		
 	}
