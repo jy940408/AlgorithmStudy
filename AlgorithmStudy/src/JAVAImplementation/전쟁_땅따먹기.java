@@ -48,7 +48,6 @@ public class 전쟁_땅따먹기 {
 			
 		}
 		
-	
 		br.close();
 		
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
