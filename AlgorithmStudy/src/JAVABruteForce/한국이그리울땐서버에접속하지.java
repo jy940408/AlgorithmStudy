@@ -20,77 +20,51 @@ public class 한국이그리울땐서버에접속하지 {
 		for(int i = 0 ; i < amountNum ; i++) {
 			testLine[i] = scan.nextLine();
 		}
-
+		
 		for(int i = 0 ; i < amountNum ; i++) {
+			
 			ArrayList<String> testString = new ArrayList<String>(Arrays.asList(testLine[i].split("")));
-			if(patternString.size() > testString.size()) {
-				root1:
-				for(int j = 0, k = 0 ; j < patternString.size() ; j++, k++) {
-					if(k < testString.size()) {
-						if(!patternString.get(j).equals(testString.get(k)) && !(patternString.get(j)).equals("*")) {
-							resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) + " 1 NE";
+			
+			root1:
+			for(int j = 0, k = 0 ; j < patternString.size() ; j++, k++) {
+				
+				if(k < testString.size()) {
+					if(j != patternString.size()-1 && k != testString.size()-1 && patternString.get(j).equals(testString.get(k)) && !patternString.equals("*")) {
+						System.out.println("여기"+patternString.get(j) + " " + testString.get(k));
+					}else if(patternString.get(j).equals("*")) {
+						if(j == patternString.size()-1) {
+							resultList[i] = "DA";
 							break;
-						}else if((patternString.get(j)).equals("*") && j == (patternString.size()-1)) {
-							resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) + " 2 DA";
-							break;
-						}else if((patternString.get(j)).equals("*") && j != (patternString.size()-1)) {
-							for(int l = 0 ; l < testString.size()-k ; l++ ) {	
-								if(patternString.get(j+1).equals(testString.get(k+l))) {
-									System.out.println(k + " " + l);
+						}else {
+							System.out.println("여기");
+							for(int l = testString.size()-k-1 ; l >= 0 ; l-- ) {	
+								if(patternString.get(j+1).equals(testString.get(k+l)) && !patternString.get(j+1).equals(testString.get(k+l-1))) {
+									System.out.println("여기"+patternString.get(j+1) + " " + testString.get(k+l-1) + " " + k);
 									k = k + l-1;
 									break;
-								}else if(l == ((testString.size()-k)-1) && !patternString.get(j+1).equals(testString.get(k+l))) {
-									resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) +  " 4 NE";
+								}else if(l == ((testString.size()-k)-1) && patternString.get(j+1).equals(testString.get(k+l)) && !patternString.get(j+1).equals(testString.get(k+l-1))) {
+									resultList[i] = "NE";
+									System.out.println("이거?"+patternString.get(j+1) + " " + testString.get(k+l) + " " + (k+l));
+									break root1;
+								}else if((j+1) == patternString.size()-1&& l == ((testString.size()-k)-1) && patternString.get(j+1).equals(testString.get(k+l)) && !patternString.get(j+1).equals(testString.get(k+l-1))) {
+									resultList[i] = "NE";
+									System.out.println("이거?"+patternString.get(j+1) + " " + testString.get(k+l) + " " + (k+l));
 									break root1;
 								}
 							}
-						}else if(patternString.get(j).equals(testString.get(k)) && j == (patternString.size()-1)) {
-							if(k == testString.size()-1) {
-								resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) + " 5 DA";
-								break;
-							}else {
-								resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) + " 12 NE";
-								break;
-							}
 						}
-					}else if(k >= testString.size()) {
-						if(j == patternString.size()-1 && patternString.get(j).equals("*")) {
-							resultList[i] = j + " " + patternString.get(j) + " " + k + " " + " 6 DA";
-							break;
-						}else {
-							resultList[i] = j + " " + patternString.get(j) + " " + k + " " + " 7 NE";
-							break;
-						}
+					}else if(j == patternString.size()-1 && k == testString.size()-1 && patternString.get(j).equals(testString.get(k)) && !patternString.equals("*")) {
+						System.out.println(patternString.get(j) + " " + testString.get(k));
+						resultList[i] = "DA";
+						break;
 					}
-				}
-			}else if(patternString.size() <= testString.size()) {
-				root1:
-				for(int j = 0, k = 0 ; j < patternString.size() ; j++, k++) {
-					if(!patternString.get(j).equals(testString.get(k)) && !(patternString.get(j)).equals("*")) {
-						resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) + " 1 NE";
+				}else if(k >= testString.size()) {
+					if(j == patternString.size()-1 && patternString.get(j).equals("*")) {
+						resultList[i] = "DA";
 						break;
-					}else if((patternString.get(j)).equals("*") && j == (patternString.size()-1)) {
-						resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) + " 2 DA";
+					}else {
+						resultList[i] = "NE";
 						break;
-					}else if((patternString.get(j)).equals("*") && j != (patternString.size()-1)) {
-						for(int l = 0 ; l < testString.size()-k ; l++ ) {	
-							if(patternString.get(j+1).equals(testString.get(k+l))) {
-								System.out.println(k + " " + l);
-								k = k + l-1;
-								break;
-							}else if(l == ((testString.size()-k)-1) && !patternString.get(j+1).equals(testString.get(k+l))) {
-								resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) +  " 4 NE";
-								break root1;
-							}
-						}
-					}else if(patternString.get(j).equals(testString.get(k)) && j == (patternString.size()-1)) {
-						if(k == testString.size()-1) {
-							resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) + " 5 DA";
-							break;
-						}else {
-							resultList[i] = j + " " + patternString.get(j) + " " + k + " " + testString.get(k) + " 12 NE";
-							break;
-						}
 					}
 				}
 			}
@@ -100,6 +74,8 @@ public class 한국이그리울땐서버에접속하지 {
 		for(int i = 0 ; i < resultList.length ; i++) {
 			System.out.println(resultList[i]);
 		}
+
+
 
 	}
 
