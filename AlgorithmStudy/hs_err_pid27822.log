@@ -1,0 +1,29 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00000001116812c4, pid=27822, tid=25603
+#
+# JRE version: Java(TM) SE Runtime Environment (15.0.2+7) (build 15.0.2+7-27)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (15.0.2+7-27, mixed mode, sharing, tiered, compressed oops, g1 gc, bsd-amd64)
+# Problematic frame:
+# C  [libjimage.dylib+0x32c4]  _ZNK15ImageFileReader19find_location_indexEPKcPy+0x24
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:+ShowCodeDetailsInExceptionMessages -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49329 -javaagent:/Applications/SpringToolSuite4.app/Contents/Eclipse/configuration/org.eclipse.osgi/245/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 --module-path=/Users/junyoung/git/AlgorithmStudy/AlgorithmStudy/bin -Djdk.module.main=AlgorithmStudy AlgorithmStudy/JAVAImplementation.카드캡터상근이
+
+Host: MacBookAir10,1 x86_64 2400 MHz, 8 cores, 16G, Darwin 20.2.0
+Time: Tue Jun 15 03:31:09 2021 KST elapsed time: 27754.831093 seconds (0d 7h 42m 34s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fc280008e00):  JavaThread "Signal Dispatcher" daemon [_thread_in_vm, id=25603, stack(0x000000030a8f3000,0x000000030a9f3000)]
+
+Stack: [0x000000030a8f3000,0x000000030a9f3000],  sp=0x000000030a9f1360,  free space=1016k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
