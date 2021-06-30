@@ -2,10 +2,7 @@ package JAVASorting;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
-import java.util.Set;
 
 public class 베스트셀러 {
 
@@ -15,18 +12,27 @@ public class 베스트셀러 {
 		
 		int firstNum = Integer.parseInt(scan.nextLine());
 		ArrayList<String> testList = new ArrayList<String>();
-		ArrayList<String> result = new ArrayList<String>();
+		ArrayList<String> wordList = new ArrayList<String>();
+		ArrayList<Integer> wordNum = new ArrayList<Integer>();
 		
 		for(int i = 0 ; i < firstNum ; i++) {
-			testList.add(scan.nextLine());
+			String testWord = scan.nextLine();
+			testList.add(testWord);
+			if(!wordList.contains(testWord)) {
+				wordList.add(testWord);
+			}
 		}
-
-		Set<String> setList = new HashSet<String>(testList);
-		Iterator<String> setIter = setList.iterator();
 		
-		for(int i = 0 ; i < setList.size() ; i++) {
-			System.out.println(Collections.frequency(testList, setIter.next()));
+		Collections.sort(wordList);
+		
+		for(int i = 0 ; i < wordList.size() ; i++) {
+			wordNum.add(Collections.frequency(testList, wordList.get(i)));
 		}
+		
+		int max = Collections.max(wordNum);
+		
+		System.out.println(wordList.get(wordNum.indexOf(max)));
+		
 	}
 
 }
