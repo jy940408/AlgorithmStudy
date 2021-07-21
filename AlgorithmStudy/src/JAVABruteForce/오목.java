@@ -34,15 +34,12 @@ public class 오목 {
 		
 		scan.close();
 		
-		for(int i = 0 ; i < 19 ; i++) {
-			for(int j = 0 ; j < 19 ; j++) {
-				
-				
+		for(int i = 0 ; i < 18 ; i++) {
+			for(int j = 0 ; j < 18 ; j++) {
 				
 			}
 		}
 		
-
 	}
 
 }
