@@ -50,13 +50,13 @@ public class 오목 {
 
 	public static void check(int i, int j) {
 		
-		if(i < 14 && j < 14) {
+		if(i < 15) {
 			for(int k = 0 ; k < 5 ; k++) {
-	//			가로 확인
+	//			세로 확인
 				if(board[i][j] != board[i+k][j]) {
 					break;
 				}else if(board[i][j] == board[i+k][j] && k == 4) {
-					if(i < 13) {
+					if(i < 14) {
 						if(board[i+k][j] != board[i+k+1][j]) {
 							row = i;
 							col = j;
@@ -68,7 +68,7 @@ public class 오목 {
 						}else{
 							break;
 						}
-					}else if(i == 13) {
+					}else if(i == 14) {
 						row = i;
 						col = j;
 						if(board[i][j] == 1) {
@@ -79,13 +79,17 @@ public class 오목 {
 					}
 				}
 			}
+		}
 			
+		if(j < 15) {
 			for(int k = 0 ; k < 5 ; k++) {
-	//			세로 확인
+	//			가로 확인
+				System.out.println("가로확인: " + board[i][j] + ", i: " + i + ", j: " + j);
 				if(board[i][j] != board[i][j+k]) {
 					break;
 				}else if(board[i][j] == board[i][j+k] && k == 4) {
-					if(j < 13) {
+					System.out.println(board[i][j]);
+					if(j < 14) {
 						if(board[i][j+k] != board[i][j+k+1]) {
 							row = i;
 							col = j;
@@ -97,7 +101,7 @@ public class 오목 {
 						}else{
 							break;
 						}
-					}else if(j == 13) {
+					}else if(j == 14) {
 						row = i;
 						col = j;
 						if(board[i][j] == 1) {
@@ -108,13 +112,15 @@ public class 오목 {
 					}
 				}
 			}
-			
+		}
+		
+		if(i < 15 && j < 15) {
 			for(int k = 0 ; k < 5 ; k++) {
 	//			우하 대각 확인
 				if(board[i][j] != board[i+k][j+k]) {
 					break;
 				}else if(board[i][j] == board[i+k][j+k] && k == 4) {
-					if(i < 13 && j < 13) {
+					if(i < 14 && j < 14) {
 						if(board[i+k][j+k] != board[i+k+1][j+k+1]) {
 							row = i;
 							col = j;
@@ -126,7 +132,7 @@ public class 오목 {
 						}else{
 							break;
 						}
-					}else if(i == 13 && j == 13) {
+					}else if(i == 14 && j == 14) {
 						row = i;
 						col = j;
 						if(board[i][j] == 1) {
@@ -139,13 +145,14 @@ public class 오목 {
 			}
 		}
 
-		if(i > 5 && j < 14) {
+		
+		if(i > 5 && j < 15) {
 			for(int k = 0 ; k < 5 ; k++) {
 	//			우상 대각 확인
 				if(board[i][j] != board[i-k][j+k]) {
 					break;
 				}else if(board[i][j] == board[i-k][j+k] && k == 4) {
-					if(i > 4 && j < 13) {
+					if(i > 4 && j < 14) {
 						if(board[i-k][j+k] != board[i-k-1][j+k+1]) {
 							row = i;
 							col = j;
@@ -157,7 +164,7 @@ public class 오목 {
 						}else{
 							break;
 						}
-					}else if(i == 4 && j == 13) {
+					}else if(i == 4 && j == 14) {
 						row = i;
 						col = j;
 						if(board[i][j] == 1) {
