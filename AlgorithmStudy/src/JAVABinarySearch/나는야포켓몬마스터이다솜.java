@@ -1,4 +1,4 @@
-package JAVADataStructures;
+package JAVABinarySearch;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
