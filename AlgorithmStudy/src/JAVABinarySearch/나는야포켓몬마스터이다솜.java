@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class 나는야포켓몬마스터이다솜 {
@@ -17,13 +18,16 @@ public class 나는야포켓몬마스터이다솜 {
 		String[] firstLine = (br.readLine()).split(" ");
 		int pokemonNum = Integer.parseInt(firstLine[0]);
 		int questionNum = Integer.parseInt(firstLine[1]);
-		HashMap<Integer, String> pokemon = new HashMap<Integer, String>();
+		HashMap<String, Integer> pokemon = new HashMap<String, Integer>();
+		String[] pokemon_ = new String[pokemonNum];
 		
 		char testString_;
 		String testString;
 		
 		for(int i = 0 ; i < pokemonNum ; i++) {
-			pokemon.put(i, br.readLine());
+			String pokemonName = br.readLine();
+			pokemon.put(pokemonName, i);
+			pokemon_[i] = pokemonName;
 		}
 		
 		for(int i = 0 ; i < questionNum ; i++) {
@@ -32,14 +36,9 @@ public class 나는야포켓몬마스터이다솜 {
 			testString_ = testString.charAt(0);
 			
 			if(Character.isDigit(testString_)) {
-				bw.write(pokemon.get((Integer.parseInt(testString)-1)));
+				bw.write(pokemon_[((Integer.parseInt(testString)-1))]);
 			}else {
-				for(int j = 0 ; j < pokemonNum ; j++) {
-					if(testString.equals(pokemon.get(j))) {
-						bw.write((j+1)+"");
-						break;
-					}
-				}
+				bw.write((pokemon.get(testString)+1)+"");
 			}
 			
 			bw.newLine();
