@@ -1,52 +1,52 @@
 package JAVABruteForce;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class 모든순열 {
 
-	public static void numList(int firstLine) {
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
 		
-//		for문 반복해서 돌리기
-		for(int i = 1 ; i <= firstLine ; i++) {
-			
+		int checkNum = Integer.parseInt(br.readLine());
+		int[] checkArray = new int[checkNum];
+		int[] usedArray = new int[checkNum];
+		boolean[] visitArray = new boolean[checkNum];
+		for(int i = 0 ; i < checkNum ; i++) {
+			checkArray[i] = (i+1);
+			visitArray[i] = true;
+			System.out.println("checkArray[" + i + "]: " + checkArray[i] + ", visitArray[" + i +"]: " + visitArray[i]);
 		}
+		
+		makePermutation(checkArray, usedArray, visitArray, 0);
 		
 	}
 	
-	public static void main(String[] args) {
+	private static void makePermutation(int[] checkArray, int[] usedArray, boolean[] visitArray, int depth) throws IOException {
 		
-		Scanner scan = new Scanner(System.in);
-		
-//		처음 입력한 숫자
-		int firstLine = scan.nextInt();
-//		순열 총 갯수
-		int allRound = 1;
-//		만든 순열 담아둘 배열
-		ArrayList numList = new ArrayList<>();
-		
-		for(int i = 1 ; i <= firstLine ; i++) {
-			allRound = allRound * i;
-			numList.add(i);
+		if(depth == checkArray.length) {
+			for(int i = 0 ; i < checkArray.length ; i++) {
+				bw.write(usedArray[i] + " ");
+			}
+			bw.newLine();
+			bw.flush();
+			return;
 		}
 		
-//		지금까지 사용한 숫자 목록
-		ArrayList useList = new ArrayList<>();
-//		만들어진 순열 목록
-		ArrayList makeList = new ArrayList<>();
-		
-		System.out.println("allRound: " + allRound);
-		System.out.println("numList: " + numList);
-		
-		for(int i  = 1 ; i <= 3 ; i++) {
-			for(int j = 1 ; j <= 3 ; j++) {
-				if(i != j) {
-					for(int k = 1 ; k <= 3 ; k++) {
-						if(i != k && j != k) {
-							System.out.println(i + " " + j + " " + k);
-						}
-					}
-				}
+		for(int i = 0 ; i < checkArray.length ; i++) {
+			if(visitArray[i]) {
+				visitArray[i] = false;
+				usedArray[depth] = checkArray[i];
+				System.out.println("depth: " + depth + ", usedArray[" + depth + "]: " + usedArray[depth]);
+				makePermutation(checkArray, usedArray, visitArray, depth+1);
+				visitArray[i] = true;
 			}
 		}
 		
