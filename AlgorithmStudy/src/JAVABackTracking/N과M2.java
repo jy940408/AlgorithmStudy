@@ -15,7 +15,6 @@ public class N과M2 {
 	public static void main(String[] args) throws IOException{
 		
 		String[] firstLine = (br.readLine()).split(" ");
-		String[] secondLine = (br.readLine()).split(" ");
 		int lastNum = Integer.parseInt(firstLine[0]);
 		int sequenceLength = Integer.parseInt(firstLine[1]);
 		
@@ -23,20 +22,18 @@ public class N과M2 {
 		boolean[] visitList = new boolean[lastNum];
 		int[] usedList = new int[sequenceLength];
 		for(int i = 0 ; i < lastNum ; i++) {
-			numList[i] = Integer.parseInt(secondLine[i]);
+			numList[i] = (i+1);
 			visitList[i] = true;
 		}
 		
-		Arrays.sort(numList);
-		
-		makeSequence(numList, usedList, visitList, 0, sequenceLength);
+		makeSequence(numList, usedList, visitList, 0, 0, sequenceLength);
 		
 		br.close();
 		bw.flush();
 		bw.close();
 	}
 	
-	private static void makeSequence(int[] numList, int[] usedList, boolean[] visitList, int depth, int sequenceLength) throws IOException{
+	private static void makeSequence(int[] numList, int[] usedList, boolean[] visitList, int depth, int preIdx, int sequenceLength) throws IOException{
 		
 		if(depth == sequenceLength) {
 			for(int i = 0 ; i < sequenceLength ; i++) {
@@ -47,14 +44,19 @@ public class N과M2 {
 		}
 		
 		for(int i = 0 ; i < numList.length ; i++) {
-			if(visitList[i]) {
+			System.out.println("i: " + i + ", depth: " + depth);
+			if(visitList[i] && preIdx <= i) {
+				System.out.println("if 내부, i: " + i + ", depth: " + depth);
 				visitList[i] = false;
 				usedList[depth] = numList[i];
-				makeSequence(numList, usedList, visitList, depth+1, sequenceLength);
-				visitList[i] = true;
+				makeSequence(numList, usedList, visitList, depth+1, i, sequenceLength);
+				if(depth != 0) {
+					visitList[i] = true;
+				}
 			}
 		}
 		
+		return;
 	}
 
 }
