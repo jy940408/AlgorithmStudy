@@ -1,81 +1,53 @@
 package JAVABruteForce;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class 한국이그리울땐서버에접속하지 {
-
-	public static void main(String[] args) {
+	
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+	
+	public static void main(String[] args) throws IOException{
 		
-		Scanner scan = new Scanner(System.in);
+		int round = Integer.parseInt(br.readLine());
+		String pattern_ = br.readLine();
+		String[] pattern = pattern_.split("\\*");
+		String[] firstPattern = pattern[0].split("");
+		String[] secondPattern = pattern[1].split("");
 		
-		int amountNum = Integer.parseInt(scan.nextLine());
-		String pattern = scan.nextLine();
-		ArrayList<String> patternString = new ArrayList<String>(Arrays.asList(pattern.split("")));
-		
-		String[] resultList = new String[amountNum];
-		
-		String[] testLine = new String[amountNum];
-		for(int i = 0 ; i < amountNum ; i++) {
-			testLine[i] = scan.nextLine();
-		}
-		
-		for(int i = 0 ; i < amountNum ; i++) {
+		for(int i = 0 ; i < round ; i++) {
+			String inputString_ = br.readLine();
+			String[] inputString = inputString_.split("");
 			
-			ArrayList<String> testString = new ArrayList<String>(Arrays.asList(testLine[i].split("")));
-			
-			root1:
-			for(int j = 0, k = 0 ; j < patternString.size() ; j++, k++) {
-				
-				if(k < testString.size()) {
-					if(j != patternString.size()-1 && k != testString.size()-1 && patternString.get(j).equals(testString.get(k)) && !patternString.equals("*")) {
-						System.out.println("여기"+patternString.get(j) + " " + testString.get(k));
-					}else if(patternString.get(j).equals("*")) {
-						if(j == patternString.size()-1) {
-							resultList[i] = "DA";
-							break;
-						}else {
-							System.out.println("여기");
-							for(int l = testString.size()-k-1 ; l >= 0 ; l-- ) {	
-								if(patternString.get(j+1).equals(testString.get(k+l)) && !patternString.get(j+1).equals(testString.get(k+l-1))) {
-									System.out.println("여기"+patternString.get(j+1) + " " + testString.get(k+l-1) + " " + k);
-									k = k + l-1;
-									break;
-								}else if(l == ((testString.size()-k)-1) && patternString.get(j+1).equals(testString.get(k+l)) && !patternString.get(j+1).equals(testString.get(k+l-1))) {
-									resultList[i] = "NE";
-									System.out.println("이거?"+patternString.get(j+1) + " " + testString.get(k+l) + " " + (k+l));
-									break root1;
-								}else if((j+1) == patternString.size()-1&& l == ((testString.size()-k)-1) && patternString.get(j+1).equals(testString.get(k+l)) && !patternString.get(j+1).equals(testString.get(k+l-1))) {
-									resultList[i] = "NE";
-									System.out.println("이거?"+patternString.get(j+1) + " " + testString.get(k+l) + " " + (k+l));
-									break root1;
-								}
+			for(int j = 0 ; j < firstPattern.length ; j++) {
+				if(!inputString[j].equals(firstPattern[j])) {
+					bw.write("NE\n");
+					break;
+				}else if(inputString[j].equals(firstPattern[j]) && j == firstPattern.length-1) {
+					for(int k = 0 ; k < secondPattern.length ; k++) {
+						if(inputString.length >= (firstPattern.length + secondPattern.length)) {
+							if(!inputString[(inputString.length-secondPattern.length)+k].equals(secondPattern[k])) {
+								bw.write("NE\n");
+								break;
+							}else if(inputString[(inputString.length-secondPattern.length)+k].equals(secondPattern[k]) && k == secondPattern.length-1) {
+								bw.write("DA\n");
 							}
+						}else {
+							bw.write("NE\n");
+							break;
 						}
-					}else if(j == patternString.size()-1 && k == testString.size()-1 && patternString.get(j).equals(testString.get(k)) && !patternString.equals("*")) {
-						System.out.println(patternString.get(j) + " " + testString.get(k));
-						resultList[i] = "DA";
-						break;
-					}
-				}else if(k >= testString.size()) {
-					if(j == patternString.size()-1 && patternString.get(j).equals("*")) {
-						resultList[i] = "DA";
-						break;
-					}else {
-						resultList[i] = "NE";
-						break;
 					}
 				}
 			}
-			
 		}
 		
-		for(int i = 0 ; i < resultList.length ; i++) {
-			System.out.println(resultList[i]);
-		}
-
-
+		br.close();
+		bw.flush();
+		bw.close();
 
 	}
 
