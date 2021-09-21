@@ -1,0 +1,29 @@
+package JAVAImplementation;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class 수이어쓰기1 {
+
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+	
+	public static void main(String[] args) throws IOException{
+	
+		int testCase = Integer.parseInt(br.readLine());
+		
+		int result = 0;
+		for(int i = 0 ; i < Integer.toString(testCase).length() ; i++) {
+			result += testCase - (Math.pow(10, i)) + 1;
+		}
+		
+		br.close();
+		bw.write(result + "");
+		bw.flush();
+		bw.close();
+	}
+
+}
