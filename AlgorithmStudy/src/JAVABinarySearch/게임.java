@@ -35,13 +35,11 @@ public class 게임 {
 			
 			mid = (first+last)/2;
 			rate = (int)Math.floor((100*(double)(winNum+mid)/(double)(gameNum+mid)));
-			System.out.println("standard: " + standard + ", rate: " + rate + ", first: " + first + ", last: " + last + ", mid: " + mid);
 			
 			if(rate == standard) {
 				first = mid + 1;
 			}else if(rate > standard) {
 				rate = (int)Math.floor((100*(double)(winNum+mid-1)/(double)(gameNum+mid-1)));
-				System.out.println("el standard: " + standard + ", rate: " + rate + ", first: " + first + ", last: " + last + ", mid-1: " + (mid-1));
 				if(rate == standard) {
 					return mid;
 				}else if(rate > standard) {
