@@ -5,9 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class 등수매기기 {
 
@@ -32,6 +30,7 @@ public class 등수매기기 {
 				result += (i+1)-testCase[i];
 			}
 		}
+		
 		
 		br.close();
 		bw.write(result + "");
